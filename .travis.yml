@@ -13,7 +13,7 @@ after_success:
   - coveralls
   - touch docs/key; chmod 600 docs/key  # Secure before storing key data.
   - openssl aes-256-cbc -K $encrypted_c89fed6a587d_key -iv $encrypted_c89fed6a587d_iv -in docs/key.enc -out docs/key -d
-  - eval `ssh-agent -s`; ssh-add docs/key
+  - eval `ssh-agent -s`; ssh-add docs/key <&-
   - git config --global user.email "builds@travis-ci.com"
   - git config --global user.name "Travis CI"
   - git remote set-url origin "git@github.com:$TRAVIS_REPO_SLUG"
